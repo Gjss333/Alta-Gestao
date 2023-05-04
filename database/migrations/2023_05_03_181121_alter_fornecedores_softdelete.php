@@ -26,5 +26,6 @@ return new class extends Migration
         Schema::table('fornecedors', function (Blueprint $table) {
             $table->dropSoftDeletes();
         });
+
     }
 };
