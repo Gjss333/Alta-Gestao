@@ -32,7 +32,7 @@ use Inertia\Inertia;
 
 Route::get('/', [PrincipalController::class, 'principal'])->name('site.index');
 Route::get('/contato', [ContatoController::class, 'contato'])->name('site.contato');
-Route::post('/contato', [ContatoController::class, 'contato'])->name('site.contato');
+Route::post('/contato', [ContatoController::class, 'salvar'])->name('site.contato');
 Route::get('/sobre-nos', [SobreNosController::class, 'sobrenos'])->name('site.sobrenos');
 Route::get('/login', function(){ return 'Login'; })->name('site.login');
 
