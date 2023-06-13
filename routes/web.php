@@ -6,6 +6,8 @@ use App\Http\Controllers\PrincipalController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SobreNosController;
 use App\Http\Controllers\TesteController;
+use App\Http\Middleware\LogAcessoMiddleware;
+use App\Models\LogAcesso;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -30,9 +32,14 @@ use Inertia\Inertia;
 //     ]);
 // });
 
-Route::get('/', [PrincipalController::class, 'principal'])->name('site.index');
+Route::middleware(LogAcessoMiddleware::class)
+    ->name('site.index')
+    ->get('/', [PrincipalController::class, 'principal']);
+
 Route::post('/', [PrincipalController::class, 'principal'])->name('site.index');
-Route::get('/contato', [ContatoController::class, 'contato'])->name('site.contato');
+Route::get('/contato', [ContatoController::class, 'contato'])
+    ->name('site.contato')
+    ->middleware(LogAcessoMiddleware::class);
 Route::post('/contato', [ContatoController::class, 'salvar'])->name('site.contato');
 Route::get('/sobre-nos', [SobreNosController::class, 'sobrenos'])->name('site.sobrenos');
 Route::get('/login', function(){ return 'Login'; })->name('site.login');
