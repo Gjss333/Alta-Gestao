@@ -32,14 +32,9 @@ use Inertia\Inertia;
 //     ]);
 // });
 
-Route::middleware(LogAcessoMiddleware::class)
-    ->name('site.index')
-    ->get('/', [PrincipalController::class, 'principal']);
-
+Route::get('/', [PrincipalController::class, 'principal'])->name('site.index');
 Route::post('/', [PrincipalController::class, 'principal'])->name('site.index');
-Route::get('/contato', [ContatoController::class, 'contato'])
-    ->name('site.contato')
-    ->middleware(LogAcessoMiddleware::class);
+Route::get('/contato', [ContatoController::class, 'contato'])->name('site.contato')->middleware('log.acesso');
 Route::post('/contato', [ContatoController::class, 'salvar'])->name('site.contato');
 Route::get('/sobre-nos', [SobreNosController::class, 'sobrenos'])->name('site.sobrenos');
 Route::get('/login', function(){ return 'Login'; })->name('site.login');

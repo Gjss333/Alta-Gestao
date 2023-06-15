@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\LogAcessoMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -13,6 +14,8 @@ class Kernel extends HttpKernel
      *
      * @var array<int, class-string|string>
      */
+    // Globais
+    // são middlewares globais onde todas as requisições precisam passar por esses middleware
     protected $middleware = [
         // \App\Http\Middleware\TrustHosts::class,
         \App\Http\Middleware\TrustProxies::class,
@@ -38,6 +41,7 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \App\Http\Middleware\HandleInertiaRequests::class,
             \Illuminate\Http\Middleware\AddLinkHeadersForPreloadedAssets::class,
+            // \App\Http\Middleware\LogAcessoMiddleware::class
         ],
 
         'api' => [
@@ -54,6 +58,8 @@ class Kernel extends HttpKernel
      *
      * @var array<string, class-string|string>
      */
+
+    // Onde colocaremos apelidos nos middlewares. ($routMiddlewares para as versões 7 do laravel)
     protected $middlewareAliases = [
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
@@ -65,5 +71,6 @@ class Kernel extends HttpKernel
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'log.acesso' => \App\Http\Middleware\LogAcessoMiddleware::class
     ];
 }

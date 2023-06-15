@@ -20,7 +20,9 @@ class LogAcessoMiddleware
         $ip = $request->server->get('REMOTE_ADDR');
         $route = $request->getRequestUri();
         LogAcesso::create(['log' => "IP $ip requisitou a rota $route"]);
-        return $next($request);
+        // return $next($request);
+
+        return response('middle acessado pelo apelido.');
         
     }
 }
