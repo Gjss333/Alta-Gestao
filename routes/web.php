@@ -36,14 +36,21 @@ Route::get('/', [PrincipalController::class, 'principal'])->name('site.index');
 Route::post('/', [PrincipalController::class, 'principal'])->name('site.index');
 Route::get('/contato', [ContatoController::class, 'contato'])->name('site.contato')->middleware('log.acesso');
 Route::post('/contato', [ContatoController::class, 'salvar'])->name('site.contato');
-Route::get('/sobre-nos', [SobreNosController::class, 'sobrenos'])->name('site.sobrenos');
+Route::get('/asobre-nos', [SobreNosController::class, 'sobrenos'])->name('site.sobrenos');
 Route::get('/login', function(){ return 'Login'; })->name('site.login');
 
 Route::prefix('/app')->group(function() {
+    Route::middleware('log.acesso', 'autenticacao') 
+    ->get('/clientes', function(){ return 'Clientes'; })
+    ->name('app.clientes');
     
-    Route::get('/clientes', function(){ return 'Clientes'; })->name('app.clientes');
-    Route::get('/fornecedores', [FornecedorController::class, 'fornecedor'])->name('app.fornecedores');
-    Route::get('/produto', function(){ return 'Produto'; })->name('app.produto');
+    Route::middleware('log.acesso', 'autenticacao')
+    ->get('/fornecedores', [FornecedorController::class, 'fornecedor'])
+    ->name('app.fornecedores');
+    
+    Route::middleware('log.acesso', 'autenticacao')
+    ->get('/produtos', function(){ return 'Produto'; })
+    ->name('app.produto');
 });
 
 
