@@ -39,7 +39,7 @@ Route::post('/', [PrincipalController::class, 'principal'])->name('site.index');
 Route::get('/contato', [ContatoController::class, 'contato'])->name('site.contato')->middleware('log.acesso');
 Route::post('/contato', [ContatoController::class, 'salvar'])->name('site.contato');
 Route::get('/sobre-nos', [SobreNosController::class, 'sobrenos'])->name('site.sobrenos');
-Route::get('/entrar/{error?}', [LoginController::class, 'index'])->name('site.login');
+Route::get('/entrar/{erro?}', [LoginController::class, 'index'])->name('site.login');
 Route::post('/entrar', [LoginController::class, 'autenticar'])->name('site.login');
 
 Route::middleware('autenticacao:ldap,visitante,p3,p4')->prefix('/app')->group(function() {
