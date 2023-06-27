@@ -24,7 +24,6 @@ class LoginController extends Controller
 
     public function autenticar(Request $request) {
 
-
         $regras = [
             'usuario' => 'email',
             'senha' => 'required'
@@ -54,10 +53,15 @@ class LoginController extends Controller
             $_SESSION['nome'] = $existe->name; 
             $_SESSION['email'] = $existe->email; 
 
-            return redirect()->route('app.clientes');
+            return redirect()->route('app.home');
         }else{
             return redirect()->route('site.login', ['erro' => 1]);
-        }
-     
+        } 
+    }
+    
+    public function sair(){
+        session_destroy();
+
+        return redirect()->route('site.index');
     }
 }

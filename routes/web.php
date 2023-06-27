@@ -1,10 +1,13 @@
 <?php
 
 use App\Http\Controllers\AutenticarController;
+use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ContatoController;
 use App\Http\Controllers\FornecedorController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PrincipalController;
+use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SobreNosController;
 use App\Http\Controllers\TesteController;
@@ -43,11 +46,18 @@ Route::get('/entrar/{erro?}', [LoginController::class, 'index'])->name('site.log
 Route::post('/entrar', [LoginController::class, 'autenticar'])->name('site.login');
 
 Route::middleware('autenticacao:ldap,visitante,p3,p4')->prefix('/app')->group(function() {
-    Route::get('/clientes', function(){ return 'Clientes'; })->name('app.clientes');
+    Route::get('/home', [HomeController::class, 'index'])->name('app.home');    
+    Route::get('/sair', [LoginController::class, 'sair'])->name('app.sair');    
+    Route::get('/cliente', [ClienteController::class, 'index'])->name('app.cliente');    
     
-    Route::get('/fornecedores', [FornecedorController::class, 'fornecedor'])->name('app.fornecedores');
     
-    Route::get('/produtos', function(){ return 'Produto'; })->name('app.produto');
+    Route::get('/fornecedor', [FornecedorController::class, 'index'])->name('app.fornecedor');
+    Route::post('/fornecedor/listar', [FornecedorController::class, 'listar'])->name('app.fornecedor.listar');
+    Route::get('/fornecedor/adicionar', [FornecedorController::class, 'adicionar'])->name('app.fornecedor.adicionar');
+    
+    
+    
+    Route::get('/produto', [ProdutoController::class, 'index'])->name('app.produto');
 });
 
 
