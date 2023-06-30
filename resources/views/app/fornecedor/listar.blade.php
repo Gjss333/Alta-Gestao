@@ -13,7 +13,7 @@
             <ul>
                 <li><a href="{{  route('app.fornecedor.adicionar') }}">Novo</a></li>
                 <li><a href="{{ route('app.fornecedor') }}">Consulta</a></li>
-            </ul>
+            </ul>2
         </div>
 
         <div class="informacao-pagina">
@@ -38,14 +38,21 @@
                                 <td>{{ $fornecedor->uf }}</td>
                                 <td>{{ $fornecedor->email }}</td>
                                 <td class="editar"><a href=" {{ route('app.fornecedor.editar', $fornecedor->id) }}">Editar</a></td>
-                                <td class="excluir"><a href="/">Excluir</a></td>
+                                <td class="excluir"><a href="{{ route('app.fornecedor.excluir', $fornecedor->id) }}">Excluir</a></td>
                             </tr>
                             
                         @endforeach
                     </tbody>
                 </table>
                 
-                {{ $fornecedores->links()  }}
+                {{ $fornecedores->appends($request)->links() }}
+                <br>
+                {{ $fornecedores->count() }} - Total de registro por pagina
+                <br>
+                {{ $fornecedores->firstItem() }} - Número do primeiro registro da página
+                <br>
+                {{ $fornecedores->lastItem() }} - Número do ultimo registro da página
+
             </div>
         </div>
     </div>
