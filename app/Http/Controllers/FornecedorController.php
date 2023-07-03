@@ -80,7 +80,7 @@ class FornecedorController extends Controller
 
      public function excluir ($id){
 
-      $excluir = Fornecedor::find($id)->delete();
+      Fornecedor::find($id)->delete();
       
       return redirect()->route('app.fornecedor.adicionar');
      }
