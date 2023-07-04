@@ -11,6 +11,10 @@ a{
     background-color: aquamarine;
 }
 
+.show{
+    background-color: rgb(122, 208, 241);
+}
+
 html, body {
     height: 100%;
     margin: 0;
