@@ -39,7 +39,7 @@
                                 <td>{{ $produto->peso }}</td>
                                 <td>{{ $produto->unidade_id }}</td>
                                 <td class="editar show"><a href="{{ route('produto.show', ['produto' => $produto->id]) }}">Visualizar</a></td>
-                                <td class="editar"><a href="">Editar</a></td>
+                                <td class="editar"><a href="{{ route('produto.edit', ['produto' => $produto->id ]) }}">Editar</a></td>
                                 <td class="excluir"><a href="">Excluir</a></td>
                             </tr>
                             
