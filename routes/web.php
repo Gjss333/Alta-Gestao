@@ -59,8 +59,6 @@ Route::middleware('autenticacao:ldap,visitante,p3,p4')->prefix('/app')->group(fu
     Route::get('/fornecedor/editar/{id}/{msg?}', [FornecedorController::class, 'editar'])->name('app.fornecedor.editar');
     Route::get('/fornecedor/excluir/{id}', [FornecedorController::class, 'excluir'])->name('app.fornecedor.excluir');
     
-    
-    
     Route::resource('produto', ProdutoController::class);
 });
 

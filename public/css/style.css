@@ -15,6 +15,21 @@ a{
     background-color: rgb(122, 208, 241);
 }
 
+ul{
+    font-style: ;
+}
+
+#teste{
+    background-color: #76c4f1;
+    color: white;
+    border-radius: 120px;
+}
+
+#teste:hover{
+    background-color: #5d9dc2;
+    color: #e9e7e7;
+}
+
 html, body {
     height: 100%;
     margin: 0;

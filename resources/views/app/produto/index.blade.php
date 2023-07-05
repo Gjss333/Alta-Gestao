@@ -40,7 +40,17 @@
                                 <td>{{ $produto->unidade_id }}</td>
                                 <td class="editar show"><a href="{{ route('produto.show', ['produto' => $produto->id]) }}">Visualizar</a></td>
                                 <td class="editar"><a href="{{ route('produto.edit', ['produto' => $produto->id ]) }}">Editar</a></td>
-                                <td class="excluir"><a href="">Excluir</a></td>
+                                <td class="excluir">
+                                    <form id="form_{{$produto->id}}" action="{{ route('produto.destroy', ['produto' => $produto->id]) }}" method="POST">
+                                        @method('DELETE')
+                                        @csrf
+                                        
+                                        {{-- <button>Excluir</button> --}}
+                                        <a href="#" onclick="document.getElementById('form_{{$produto->id}}').submit()">Excluir</a>
+                                    </form>
+
+
+                                </td>
                             </tr>
                             
                         @endforeach
