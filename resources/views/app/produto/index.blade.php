@@ -44,8 +44,7 @@
                                     <form id="form_{{$produto->id}}" action="{{ route('produto.destroy', ['produto' => $produto->id]) }}" method="POST">
                                         @method('DELETE')
                                         @csrf
-                                        
-                                        {{-- <button>Excluir</button> --}}
+                                        {{-- <button>Excluir</button> usar o botão é a forma mais segura--}}
                                         <a href="#" onclick="document.getElementById('form_{{$produto->id}}').submit()">Excluir</a>
                                     </form>
 
