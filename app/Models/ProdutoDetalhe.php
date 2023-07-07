@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ProdutoDetalhe extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'produto_id',
         'comprimento',
@@ -15,4 +16,10 @@ class ProdutoDetalhe extends Model
         'altura',
         'unidade_id'
     ];
+
+    public function produto(){
+
+        // Vai apontar para onde o ProdutoDetalhe pertence que nesse caso é Produto.
+        return $this->belongsTo(Produto::class);
+    }
 }

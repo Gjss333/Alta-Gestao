@@ -15,4 +15,11 @@ class Produto extends Model
         'peso',
         'unidade_id'
     ];
+
+    public function produtoDetalhe(){
+        //produto tem 1 produto-Detalhe
+        //O ORM Vai entender que ele precisa procurar um registro
+        //relacionado em produtoDetalhes com base na (fk -> produto_id)
+        return $this->hasOne(ProdutoDetalhe::class);
+    }
 }
