@@ -5,6 +5,7 @@
 @section('conteudo')
     
     <div class="conteudo-pagina">
+
         <div class="titulo-pagina-2">
             <p>Listagem de Pedidos</p>
         </div>
@@ -25,6 +26,8 @@
                             <th>Cliente</th>
                             <th></th>
                             <th></th>
+                            <th></th>
+                            <th></th>
                         </tr>
                     </thead>
 
@@ -33,7 +36,8 @@
                             <tr>
                                 <td>{{ $pedido->id }}</td>
                                 <td>{{ $pedido->cliente_id }}</td>
-                                <td class="editar show"><a href="{{ route('pedido.show', ['peido' => $pedido->id]) }}">Visualizar</a></td>
+                                <td><a href="{{ route('app.pedido-produto.create', ['pedido' => $pedido->id]) }}">Adicionar Produtos</a></td>
+                                <td class="editar show"><a href="{{ route('pedido.show', ['pedido' => $pedido->id]) }}">Visualizar</a></td>
                                 <td class="editar"><a href="{{ route('pedido.edit', ['pedido' => $pedido->id ]) }}">Editar</a></td>
                                 <td class="excluir">
                                     <form id="form_{{$pedido->id}}" action="{{ route('pedido.destroy', ['pedido' => $pedido->id]) }}" method="POST">

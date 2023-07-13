@@ -21,8 +21,8 @@
                 <table border="1" width="100%">
                     <thead>
                         <tr>
+                            <th>ID Pedido</th>
                             <th>Nome</th>
-                            <th></th>
                             <th></th>
                             <th></th>
                         </tr>
