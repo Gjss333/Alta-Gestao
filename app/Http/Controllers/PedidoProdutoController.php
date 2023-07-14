@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pedido;
+use App\Models\PedidoProduto;
 use App\Models\Produto;
 use Illuminate\Http\Request;
 
@@ -30,13 +31,21 @@ class PedidoProdutoController extends Controller
      */
     public function store(Request $request, Pedido $pedido)
     {
-        echo '<pre>';
-        print_r($pedido);
-        echo '</pre>';
-        echo '<br>';
-        echo '<pre>';
-        print_r($request->all());
-        echo '</pre>';
+        $regras = [
+            'produto_id' => 'exists:produtos,id'
+        ];
+
+        $feedback = [
+            'produto_id.exists' => 'O Produto informado não existe'
+        ];
+
+        $request->validate($regras, $feedback);
+
+        $pedidoProduto = New PedidoProduto();
+        // $pedidoProduto->pedido_id =
+
+        // return redirect()->route('pedido-produto.index', ['pedido' => $pedido]);
+
     }
 
     /**
