@@ -57,8 +57,18 @@
                                         {{-- <button>Excluir</button> usar o botão é a forma mais segura--}}
                                         <a href="#" onclick="document.getElementById('form_{{$produto->id}}').submit()">Excluir</a>
                                     </form>
+                                </td>
+                            </tr>
 
+                            <tr>
+                                <td colspan="12">
+                                    <p>Pedidos</p>
 
+                                    @foreach ($produto->pedidos as $pedido)
+                                        <a href="{{ route('app.pedido-produto.create', ['pedido' => $pedido->id]) }}">
+                                            {{ $pedido->id }}
+                                        </a>
+                                    @endforeach
                                 </td>
                             </tr>
                             
